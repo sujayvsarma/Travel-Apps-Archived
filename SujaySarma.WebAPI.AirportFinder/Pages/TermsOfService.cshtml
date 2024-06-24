@@ -1,0 +1,251 @@
+﻿@page "/terms-of-service"
+<!DOCTYPE html>
+@{
+    DateTime rightNow = DateTime.UtcNow;
+}
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="expires" content="@rightNow.AddMinutes(5).ToString("yyyy-MM-ddTHH:mm:ss.msZ")" />
+
+    <meta name="referrer" content="origin-when-crossorigin" id="meta_referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86, shrink-to-fit=yes, user-scalable=yes" />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="revisit-after" content="14 days" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/">
+
+    <meta name="distribution" content="web" />
+    <meta name="rating" content="general" />
+    <meta name="rating" content="safe for kids" />
+
+    <meta name="subject" content="travel" />
+    <meta name="subject" content="booking" />
+    <meta name="subject" content="tickets" />
+    <meta name="subject" content="airline" />
+
+    <meta name="author" content="Sujay V Sarma" />
+    <meta name="generator" content="asp.net 6.0" />
+    <meta name="keywords" content="airline,plan,trip,map,round trip,open ended trip,holiday,vacation,ideas,inspire,inspiration,cheap ticket,tickets,travel,flight,status,airport,india,Agartala,Agra,Ahmedabad,Aizwal,Akola,Allahabad,Amritsar,Aurangabad,Bagdogra,Balurghat,Belgaum,Bengaluru,Bhavnagar,Bhopal,Bhubaneswar,Bilaspur,Calicut,Chandigarh,Chennai,Coimbatore,Cooch-Behar,Dehradun,Delhi,Dibrugarh,Dimapur,Gaya,Goa,Guwahati,Gwalior,Hubli,Hyderabad,Imphal,Indore,Jabalpur,Jaipur,Jammu,Jodhpur,Jorhat,Kadapa,Kailashahar,Kamalpur,Kandla,Kanpur,Keshod,Khajuraho,Khowai,Kochi,Kolhapur,Kolkata,Kota,Kullu,Leh,Lilabari,Lucknow,Ludhiana,Madurai,Malda,Mangalore,Mumbai,Muzzafarpur,Mysore,Nagpur,Pantnagar,Patna,Pondicherry,Porbandar,Port Blair,Pune,Raipur,Rajahmundry,Rajkot,Ranchi,Rupsi,Salem,Satna,Shillong,Shimla,Sholapur,Silchar,Srinagar,Surat,Tanjavur,Tezpur,Tezu,Thiruvananthapuram,Tiruchirappalli,Tirupati,Tuticorin,Udaipur,Vadodara,Varanasi,Vijayawada,Visakhapatnam,Warangal,IXA,AGR,AMD,AJL,AKD,IXD,ATQ,IXU,IXB,RGH,IXG,BLR,BHU,BHO,BBI,PAB,CCJ,IXC,MAA,CJB,COH,DED,DEL,DIB,DMU,GAY,GOI,GAU,GWL,HBX,HYD,IMF,IDR,JLR,JAI,IXJ,JDH,JRH,CDP,IXH,IXQ,IXY,KNU,IXK,HJR,IXN,COK,KLH,CCU,KTU,KUU,IXL,IXI,LKO,LUH,IXM,LDA,IXE,BOM,MZU,MYQ,NAG,PGH,PAT,PNY,PBC,IXZ,PNQ,RPR,RJA,RAJ,IXR,RUP,SXV,TNI,SHL,SLV,SSE,IXS,SXR,STV,TJV,TEZ,TEI,TRV,TRZ,TIR,TCR,UDR,BDQ,VNS,VGA,VTZ,WGC" />
+    <meta name="copyright" content="Copyright &copy; @rightNow.Year Sujay V Sarma. All Rights Reserved." />
+
+    <meta name="abstract" content="Plan your travel and trips using a map based interface. Book your tickets directly with the airline. Also view arrival and departure boards of any airport in India." />
+    <meta name="summary" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+    <meta name="description" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Airport Finder API - a Sujay Travel Apps API</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/glyphicons/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/app.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/anon.css" />
+    <style type="text/css">
+        li {
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-transparent text-white box-shadow p-3 sticky-top" style="background-color: #153b5c !important;">
+            <div class="navbar-brand">
+                <a class="text-white font-weight-bold" style="font-size: 24pt;text-shadow: 1px 0px 2px rgba(255, 255, 255, 0.75);" href="/">
+                    <img src="/images/logo.png" style="width: 100%;" />
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main role="main" class="p-0 m-0">
+        <div class="container-fluid w-75 mt-3">
+            <h1>Airport Finder API</h1>
+            <p>A Sujay Travel Apps API</p>
+            <hr />
+            <h2>Terms of Service</h2>
+            <p style="font-size: 0.75rem;"><strong>Last revised:</strong> July 31st, 2022.</p>
+            <hr />
+            <p>
+                PLEASE READ CAREFULLY THE FOLLOWING TERMS OF SERVICE ("Terms") BEFORE USING SUJAYTRAVELAPPS.COM ("Site"). BY ACCESSING OR USING THIS SITE, YOU ACKNOWLEDGE THAT
+                YOU HAVE READ, UNDERSTOOD, ACCEPTED AND AGREE TO BE BOUND BY THESE TERMS. THESE TERMS FORM A LEGALLY BINDING AGREEMENT BETWEEN YOURSELF AND SUJAYTRAVELAPPS.COM AND
+                EFFECTIVE AS IF YOU HAD SIGNED IT. IF YOU DO NOT AGREE WITH THESE TERMS OR IN THE FUTURE DISAGREE WITH ANY OF THE TERMS BELOW, YOU MUST STOP USING OR ACCESSING
+                THE SITE IMMEDIATELY. CONTINUED ACCESS AND USE OF THE SITE WILL BE DEEMED AS ACCEPTANCE OF THESE TERMS IN FULL.
+            </p>
+            <p>
+                <strong>1) Updates to Terms</strong>
+            </p>
+            <p>
+                These terms and conditions will be updated periodically. The date of the last update is always displayed above (at the top of this content). For legal purposes,
+                this shall be taken to mean at 00:00 hours of that day and be in effect through out the day.
+            </p>
+            <p>
+                <strong>2) Questions, Concerns and Contact Information</strong>
+            </p>
+            <p>
+                If you have any questions or concerns about these terms, you may contact us via e-mail at: support&nbsp;@@&nbsp;SUJAYTRAVELAPPS.COM&nbsp;.&nbsp;com and we shall respond to your
+                questions as soon as possible. You may also leave us a message via our <a href="/contact-us">Contact Us</a> page, select the &quot;Terms of Service&quot; as your subject.
+            </p>
+            <p>
+                <strong>3) Young Adults and Children</strong>
+            </p>
+            <p>
+                The Site is meant for use only by a person or persons that are legally above 18 years of age. If you are below the age of 18 years, you MUST NOT USE THIS SITE. If you
+                believe we have collected information from a person below 18 years of age, please use the contact information above to let us know immediately and we shall try to remove
+                the information with due priority.
+            </p>
+            <p>
+                <strong>4) Permitted Use of the Site</strong>
+            </p>
+            <p>
+                Your usage of this Site is permitted only to the accessing this website and using the features provided through the links, forms and menus on this Site, using a standard
+                Web Browser. You may access this Site via a Web Browser only on a personal desktop computer, laptop computer or a mobile phone. You may not access this Site or use its
+                features or services from any other system or device including but not restricted to: smart devices, wearables, VR devices, televisions, refridgerators, drones, IOT and Edge
+                devices, other applications or systems. Accessing this Site using software and means not permitted as above may attract action and penalties under applicable laws.
+            </p>
+            <p>
+                <strong>5) (Re)Distribution of Content</strong>
+            </p>
+            <p>
+                You are expressly forbidden from copying, modifying, resubmitting, crawling, scraping and/or using in a Frame/IFrame the content on this Site for use on any other Site or service.
+                Any screenshots you take or post online or email must include the URL of the page you took the screenshot on and if possible show your system date and time.
+            </p>
+            <p>
+                <strong>6) Proprietary and Intellectual Property Rights</strong>
+            </p>
+            <p>
+                You acknowledge and agree that, as between SUJAYTRAVELAPPS.COM and you, that all rights, title, and interest in and to the Site and the Content, including without limitation any patents,
+                copyrights, trademarks, trade secrets, inventions, know-how, and all other intellectual property rights are owned exclusively by SUJAYTRAVELAPPS.COM or its licensors and are protected by
+                Indian intellectual property laws and other applicable laws. The text, graphics, logos, icons, images, media, data, audio, animation, software and other information and materials,
+                is the copyright and property of SUJAYTRAVELAPPS.COM or its content suppliers and protected by Indian and international copyright laws. Any other use, including the reproduction,
+                modification, distribution, transmission, republication, display or performance, of the Content of the Site, is strictly prohibited. The trademarks, service marks, logos, slogans,
+                trade names and trade dress used on the Site are proprietary to SUJAYTRAVELAPPS.COM. Without limiting the foregoing, SUJAYTRAVELAPPS.COM and SUJAYTRAVELAPPS.COM are registered trademarks of SUJAYTRAVELAPPS.COM.
+                Unauthorized use of any trademark of SUJAYTRAVELAPPS.COM may be a violation of trademark laws. Any third party names or trademarks referenced in the Site do not constitute or imply affiliation,
+                endorsement or recommendation by SUJAYTRAVELAPPS.COM or of SUJAYTRAVELAPPS.COM by the third parties.
+            </p>
+            <p>
+                <strong>7) Links</strong>
+            </p>
+            <p>
+                This Site contains links to pages and services on other websites not operated by SUJAYTRAVELAPPS.COM or its promoters. These links are provided for your convenience or as reference and your
+                use of these links are at your sole risk and discretion. SUJAYTRAVELAPPS.COM makes no claims on the authenticity or any responsibility for the content on those websites or referenced web pages.
+                Such links are not endorsements by SUJAYTRAVELAPPS.COM or its promoters of any information or material of those websites or web pages. You acknowledge and agree that SUJAYTRAVELAPPS.COM shall not be
+                responsible or liable, directly or indirectly, for any damage, loss or other claim caused or alleged to be caused by or in connection with, access to, use of or reliance on any content
+                available on or through any other site or resource.
+            </p>
+            <blockquote>
+                <p>
+                    <strong>Inward links to SUJAYTRAVELAPPS.COM</strong> - You may link to SUJAYTRAVELAPPS.COM from your blog, website, YouTube video, social media account, etc., provided you agree that such links do
+                    not dilute, tarnish or damage the reputation of SUJAYTRAVELAPPS.COM. Such links must not create an impression of alliance, affiliation, endorsement or other connection between that website or
+                    material and SUJAYTRAVELAPPS.COM. When a user on that website or material clicks on the link, the SUJAYTRAVELAPPS.COM website must open on its own web browser tab or window and must not be
+                    placed within a frame or iframe. SUJAYTRAVELAPPS.COM reserves the right to revoke consent for any link at any time at its discretion.
+                </p>
+            </blockquote>
+            <p>
+                <strong>8) Use of Third-party APIs</strong>
+            </p>
+            <p>
+                This Site uses third-party APIs to offer a lot of the services. For example, we use external e-mail services to send out e-mails to you and our partners. We use APIs from other data and
+                content providers to provide the Map interface, retrieve flight information, show you local contextual information, reviews and so on. Much of the information we send to these APIs are
+                not tied to your user account (for example, when we show you the map of a location, the Map does not know who you are, just that the current location being displayed are a set of latitude
+                and longitude coordinates). Some of the APIs, especially at stages like booking your tickets, would be tied to your user account.
+            </p>
+            <p>
+                SUJAYTRAVELAPPS.COM has no control on how or what the API does with your data.
+            </p>
+            <p>
+                We minimize the amount of information we send out to such third party APIs and services to the extent possible. The information we sent to any API about you shall always be available to you
+                under the Reports section once you log in to your account.
+            </p>
+            <p>
+                <strong>9) Modifications to this Site</strong>
+            </p>
+            <p>
+                SUJAYTRAVELAPPS.COM reserves the right to make modifications to this Site at any time without notice. SUJAYTRAVELAPPS.COM may also temporarily or permanently suspend or discontinue particular parts of the
+                Site or features without notice. You agree that SUJAYTRAVELAPPS.COM shall not be liable to you or to any third party for any modification, suspension, discontinuation or unavailability of this Site
+                in part or full.
+            </p>
+            <p>
+                <strong>10) Suspension and Termination</strong>
+            </p>
+            <p>
+                SUJAYTRAVELAPPS.COM reserves the right to suspend temporarily or permanently and/or terminate your access or use of this Site or its features at any time without notice, for any reason including
+                without limitation any breach by you of these Terms. You agree that SUJAYTRAVELAPPS.COM shall not be liable to you or to any third party for any modification, suspension, discontinuation or unavailability of this Site
+                in part or full.
+            </p>
+            <p>
+                <strong>11) Limitation on Liability</strong>
+            </p>
+            <p>
+                TO THE MAXIMUM EXTENT PERMITTED BY LAW, SUJAYTRAVELAPPS.COM AND ITS RELATED PARTIES DISCLAIM ALL LIABILITY, WHETHER BASED IN CONTRACT, TORT (INCLUDING WITHOUT LIMITATION NEGLIGENCE), STRICT LIABILITY
+                OR ANY OTHER THEORY ARISING OUT OF OR IN CONNECTION WITH THE SITE, USE, INABILITY TO USE OR PERFORMANCE OF THE INFORMATION, SERVICES, PRODUCTS AND MATERIALS AVAILABLE FROM THE SITE.
+                IN NO EVENT SHALL SUJAYTRAVELAPPS.COM OR ANY OF ITS AFFILIATED ENTITIES OR SUPPLIERS BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES, EVEN IF
+                THESE ENTITIES HAVE BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OR THE EXISTENCE OF ANY LIMITED
+                REMEDY. WITHOUT LIMITING THE FOREGOING, THE MAXIMUM AGGREGATE LIABILITY OF FORBIE ARISING OUT OF OR IN CONNECTION WITH THESE TERMS OF USE OR THE SITE SHALL NOT EXCEED INR RUPEES HUNDRED RUPEES (INR 100.00).
+            </p>
+            <p>
+                <strong>12) Disclaimer</strong>
+            </p>
+            <p>
+                THE SITE AND CONTENT AND THE INFORMATION, SERVICES, PRODUCTS OFFERED FOR SALE AND MATERIALS AND ACTIVITIES CONTAINED IN OR ADVERTISED ON THE SITE, INCLUDING WITHOUT LIMITATION TEXT, GRAPHICS AND LINKS,
+                ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, FORBIE AND ITS SUPPLIERS AND RELATED PARTIES
+                DISCLAIM ALL REPRESENTATIONS AND WARRANTIES, EXPRESS OR IMPLIED, WITH RESPECT TO SUCH INFORMATION, SERVICES, PRODUCTS AND MATERIALS, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR
+                FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, FREEDOM FROM COMPUTER VIRUS AND IMPLIED WARRANTIES ARISING FROM COURSE OF DEALING OR COURSE OF PERFORMANCE.
+            </p>
+            <p>
+                Without limiting the foregoing, you are responsible for taking all necessary precautions to insure that any Content or access to the Site is free of viruses or other harmful code.
+            </p>
+            <p>
+                <strong>13) Governing Law and Jurisdiction</strong>
+            </p>
+            <p>
+                These Terms shall be governed by and construed under the laws of the Country of India, without regard of the choice of law principles. You agree to the exclusive jurisdiction to the Courts of India,
+                under the jurisdiction of the Supreme Court of India to settle any disputes that may arise out of or under or in connection with these Terms.  Any cause of action or claim you may have with respect to
+                these Terms, SUJAYTRAVELAPPS.COM, the Site or its Content must be commenced within six (6) months after the claim or cause of action arises or such claim or cause of action shall be barred.
+            </p>
+            <p>
+                The Site is controlled within the Sovereign Union Territory of India. Those who choose to access the Site from locations outside of India do so on their own initiative, and are responsible for
+                compliance with local laws if and to the extent local laws are applicable. SUJAYTRAVELAPPS.COM does not represent that the Site or Content are appropriate outside India.
+            </p>
+            <p>
+                <strong>14) Force Majeure</strong>
+            </p>
+            <p>
+                SUJAYTRAVELAPPS.COM or its promoters shall not be liable for any delay or failure to perform resulting from causes outside its reasonable control or unforeseen circumstances such as acts of nature or God,
+                fire, flood, earthquake, accidents, strikes, war, terrorism, governmental act, failure of common carriers (including without limitation Internet service providers and web hosting providers), or
+                shortages of transportation facilities, fuel, energy, labor or materials.
+            </p>
+            <p>
+                <strong>15) Miscellaneous</strong>
+            </p>
+            <p>
+                These Terms set forth the entire understanding and agreement between you and SUJAYTRAVELAPPS.COM with respect to the subject matter hereof. If any provision of the Terms is found by a court of competent
+                jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions of the
+                Terms shall remain in full force and effect. Headings are for reference only and in no way define, limit, construe or describe the scope or extent of such section. SUJAYTRAVELAPPS.COM's failure to act with
+                respect to any failure by you or others to comply with these Terms does not waive its right to act with respect to subsequent or similar failures. You may not assign or transfer your rights or
+                obligations under these Terms without the prior written consent of SUJAYTRAVELAPPS.COM, and any assignment or transfer in violation of this provision shall be null and void. There are no third party
+                beneficiaries to these Terms.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer text-white border-top">
+        <div class="container p-3">
+            <div class="small text-white" id="bg-pfg"></div>
+            Copyright &copy; @rightNow.Year - Sujay Travel Apps. All Rights Reserved.
+            | <a href="/terms-of-service" style="color: #ffffff;">Terms of Service</a> | <a href="/privacy-policy" style="color: #ffffff;">Privacy Policy</a>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/floating-ui/popper.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

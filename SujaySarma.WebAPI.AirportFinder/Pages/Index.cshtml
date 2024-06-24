@@ -1,0 +1,84 @@
+﻿@page "/"
+<!DOCTYPE html>
+@{
+    DateTime rightNow = DateTime.UtcNow;
+}
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="expires" content="@rightNow.AddMinutes(5).ToString("yyyy-MM-ddTHH:mm:ss.msZ")" />
+
+    <meta name="referrer" content="origin-when-crossorigin" id="meta_referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86, shrink-to-fit=yes, user-scalable=yes" />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="revisit-after" content="14 days" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/">
+
+    <meta name="distribution" content="web" />
+    <meta name="rating" content="general" />
+    <meta name="rating" content="safe for kids" />
+
+    <meta name="subject" content="travel" />
+    <meta name="subject" content="booking" />
+    <meta name="subject" content="tickets" />
+    <meta name="subject" content="airline" />
+
+    <meta name="author" content="Sujay V Sarma" />
+    <meta name="generator" content="asp.net 6.0" />
+    <meta name="keywords" content="airline,plan,trip,map,round trip,open ended trip,holiday,vacation,ideas,inspire,inspiration,cheap ticket,tickets,travel,flight,status,airport,india,Agartala,Agra,Ahmedabad,Aizwal,Akola,Allahabad,Amritsar,Aurangabad,Bagdogra,Balurghat,Belgaum,Bengaluru,Bhavnagar,Bhopal,Bhubaneswar,Bilaspur,Calicut,Chandigarh,Chennai,Coimbatore,Cooch-Behar,Dehradun,Delhi,Dibrugarh,Dimapur,Gaya,Goa,Guwahati,Gwalior,Hubli,Hyderabad,Imphal,Indore,Jabalpur,Jaipur,Jammu,Jodhpur,Jorhat,Kadapa,Kailashahar,Kamalpur,Kandla,Kanpur,Keshod,Khajuraho,Khowai,Kochi,Kolhapur,Kolkata,Kota,Kullu,Leh,Lilabari,Lucknow,Ludhiana,Madurai,Malda,Mangalore,Mumbai,Muzzafarpur,Mysore,Nagpur,Pantnagar,Patna,Pondicherry,Porbandar,Port Blair,Pune,Raipur,Rajahmundry,Rajkot,Ranchi,Rupsi,Salem,Satna,Shillong,Shimla,Sholapur,Silchar,Srinagar,Surat,Tanjavur,Tezpur,Tezu,Thiruvananthapuram,Tiruchirappalli,Tirupati,Tuticorin,Udaipur,Vadodara,Varanasi,Vijayawada,Visakhapatnam,Warangal,IXA,AGR,AMD,AJL,AKD,IXD,ATQ,IXU,IXB,RGH,IXG,BLR,BHU,BHO,BBI,PAB,CCJ,IXC,MAA,CJB,COH,DED,DEL,DIB,DMU,GAY,GOI,GAU,GWL,HBX,HYD,IMF,IDR,JLR,JAI,IXJ,JDH,JRH,CDP,IXH,IXQ,IXY,KNU,IXK,HJR,IXN,COK,KLH,CCU,KTU,KUU,IXL,IXI,LKO,LUH,IXM,LDA,IXE,BOM,MZU,MYQ,NAG,PGH,PAT,PNY,PBC,IXZ,PNQ,RPR,RJA,RAJ,IXR,RUP,SXV,TNI,SHL,SLV,SSE,IXS,SXR,STV,TJV,TEZ,TEI,TRV,TRZ,TIR,TCR,UDR,BDQ,VNS,VGA,VTZ,WGC" />
+    <meta name="copyright" content="Copyright &copy; @rightNow.Year Sujay V Sarma. All Rights Reserved." />
+
+    <meta name="abstract" content="Plan your travel and trips using a map based interface. Book your tickets directly with the airline. Also view arrival and departure boards of any airport in India." />
+    <meta name="summary" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+    <meta name="description" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Airport Finder API - a Sujay Travel Apps API</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/glyphicons/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/app.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/anon.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-transparent text-white box-shadow p-3 sticky-top" style="background-color: #153b5c !important;">
+            <div class="navbar-brand">
+                <a class="text-white font-weight-bold" style="font-size: 24pt;text-shadow: 1px 0px 2px rgba(255, 255, 255, 0.75);" href="/">
+                    <img src="/images/logo.png" style="width: 100%;" />
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main role="main" class="p-0 m-0">
+        <div class="container-fluid margin-center mt-3 mb-3">
+            <h1>Airport Finder API</h1>
+            <p>A Sujay Travel Apps API</p>
+            <hr />
+            <ul>
+                <li><a href="/swagger/v1/swagger.json">Swagger for this API</a></li>
+                <li><a href="/swagger/index.html">Swagger Playground for this API</a></li>
+                <li><a href="/terms-of-service">Terms of Service</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer text-white border-top">
+        <div class="container p-3">
+            <div class="small text-white" id="bg-pfg"></div>
+            Copyright &copy; @rightNow.Year - Sujay Travel Apps. All Rights Reserved.
+            | <a href="/terms-of-service" style="color: #ffffff;">Terms of Service</a> | <a href="/privacy-policy" style="color: #ffffff;">Privacy Policy</a>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/floating-ui/popper.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

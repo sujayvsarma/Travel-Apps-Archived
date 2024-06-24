@@ -1,0 +1,285 @@
+﻿@page "/privacy-policy"
+<!DOCTYPE html>
+@{
+    DateTime rightNow = DateTime.UtcNow;
+}
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="expires" content="@rightNow.AddMinutes(5).ToString("yyyy-MM-ddTHH:mm:ss.msZ")" />
+
+    <meta name="referrer" content="origin-when-crossorigin" id="meta_referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86, shrink-to-fit=yes, user-scalable=yes" />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="revisit-after" content="14 days" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/">
+
+    <meta name="distribution" content="web" />
+    <meta name="rating" content="general" />
+    <meta name="rating" content="safe for kids" />
+
+    <meta name="subject" content="travel" />
+    <meta name="subject" content="booking" />
+    <meta name="subject" content="tickets" />
+    <meta name="subject" content="airline" />
+
+    <meta name="author" content="Sujay V Sarma" />
+    <meta name="generator" content="asp.net 6.0" />
+    <meta name="keywords" content="airline,plan,trip,map,round trip,open ended trip,holiday,vacation,ideas,inspire,inspiration,cheap ticket,tickets,travel,flight,status,airport,india,Agartala,Agra,Ahmedabad,Aizwal,Akola,Allahabad,Amritsar,Aurangabad,Bagdogra,Balurghat,Belgaum,Bengaluru,Bhavnagar,Bhopal,Bhubaneswar,Bilaspur,Calicut,Chandigarh,Chennai,Coimbatore,Cooch-Behar,Dehradun,Delhi,Dibrugarh,Dimapur,Gaya,Goa,Guwahati,Gwalior,Hubli,Hyderabad,Imphal,Indore,Jabalpur,Jaipur,Jammu,Jodhpur,Jorhat,Kadapa,Kailashahar,Kamalpur,Kandla,Kanpur,Keshod,Khajuraho,Khowai,Kochi,Kolhapur,Kolkata,Kota,Kullu,Leh,Lilabari,Lucknow,Ludhiana,Madurai,Malda,Mangalore,Mumbai,Muzzafarpur,Mysore,Nagpur,Pantnagar,Patna,Pondicherry,Porbandar,Port Blair,Pune,Raipur,Rajahmundry,Rajkot,Ranchi,Rupsi,Salem,Satna,Shillong,Shimla,Sholapur,Silchar,Srinagar,Surat,Tanjavur,Tezpur,Tezu,Thiruvananthapuram,Tiruchirappalli,Tirupati,Tuticorin,Udaipur,Vadodara,Varanasi,Vijayawada,Visakhapatnam,Warangal,IXA,AGR,AMD,AJL,AKD,IXD,ATQ,IXU,IXB,RGH,IXG,BLR,BHU,BHO,BBI,PAB,CCJ,IXC,MAA,CJB,COH,DED,DEL,DIB,DMU,GAY,GOI,GAU,GWL,HBX,HYD,IMF,IDR,JLR,JAI,IXJ,JDH,JRH,CDP,IXH,IXQ,IXY,KNU,IXK,HJR,IXN,COK,KLH,CCU,KTU,KUU,IXL,IXI,LKO,LUH,IXM,LDA,IXE,BOM,MZU,MYQ,NAG,PGH,PAT,PNY,PBC,IXZ,PNQ,RPR,RJA,RAJ,IXR,RUP,SXV,TNI,SHL,SLV,SSE,IXS,SXR,STV,TJV,TEZ,TEI,TRV,TRZ,TIR,TCR,UDR,BDQ,VNS,VGA,VTZ,WGC" />
+    <meta name="copyright" content="Copyright &copy; @rightNow.Year Sujay V Sarma. All Rights Reserved." />
+
+    <meta name="abstract" content="Plan your travel and trips using a map based interface. Book your tickets directly with the airline. Also view arrival and departure boards of any airport in India." />
+    <meta name="summary" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+    <meta name="description" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Airport Finder API - a Sujay Travel Apps API</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/glyphicons/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/app.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/anon.css" />
+    <style type="text/css">
+        li {
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-transparent text-white box-shadow p-3 sticky-top" style="background-color: #153b5c !important;">
+            <div class="navbar-brand">
+                <a class="text-white font-weight-bold" style="font-size: 24pt;text-shadow: 1px 0px 2px rgba(255, 255, 255, 0.75);" href="/">
+                    <img src="/images/logo.png" style="width: 100%;" />
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="p-0 m-0">
+        <div class="container-fluid w-75 mt-3">
+            <h1>Airport Finder API</h1>
+            <p>A Sujay Travel Apps API</p>
+            <hr />
+            <h2>Privacy Policy</h2>
+            <p style="font-size: 0.75rem;"><strong>Last revised:</strong> July 31st, 2022.</p>
+            <hr />
+            <h4>Introduction</h4>
+            <p>
+                SUJAYTRAVELAPPS is the brainchild of <a target="_blank" href="https://twitter.com/sujaysarma">Sujay Sarma</a> and is
+                operated primarily by <a target="_blank" href="https://www.linkedin.com/in/sujaysarma/">Sujay</a> with assistance from
+                subject matter experts from time to time.
+            </p>
+            <hr />
+            <h4>Our Policy</h4>
+            <p>
+                We do not like it when we find our data transferred to other parties without our knowledge and consent and we
+                seek to limit the information we transfer about you to third parties without your knowledge and consent. This Privacy Policy
+                describes how SUJAYTRAVELAPPS protects and uses your Data (as defined below) we collect on our website, located at SUJAYTRAVELAPPS.COM,
+                and through our allied services.
+            </p>
+            <p style="text-transform: uppercase;">
+                Please read this policy carefully to understand our policies and practices regarding your information
+                and how we will treat it. By accessing or using our Application, you agree to this Privacy Policy. This
+                Privacy Policy may change from time to time (see below under "Changes to Our Privacy Policy"). Your
+                continued use of SUJAYTRAVELAPPS after we make changes is deemed to be acceptance of those changes, so
+                please check this Privacy Policy periodically for updates.
+            </p>
+            <hr />
+            <p>
+                <strong>1) Where are we located? What laws are we bound by?</strong>
+            </p>
+            <p>
+                SUJAYTRAVELAPPS is based in the Union Territory of India and is subject to the
+                <a target="_blank" href="https://www.indiacode.nic.in/bitstream/123456789/13116/1/it_act_2000_updated.pdf">IT Act of 2000</a> (PDF)
+                and the rules and conditions enshrined in the IT Act and its subsequent ammendments, including judgements
+                of the Supreme Court of India and various subordinate Courts in India.
+            </p>
+            <p>
+                <strong>2) How do we store your data? How secure is it?</strong>
+            </p>
+            <p>
+                We do not collect or store any data directly as part of the services provided through SUJAYTRAVELAPPS.COM. Certain indirect data may be collected 
+                as part of regular operations, such as your incoming IP address, the pages or URLs you visited and so on, that are standard for any website on the Internet. 
+                These are stored purely on web server logs and used only in statistical performance and failure analysis.
+            </p>
+            <p>
+                <strong>3) What is &quot;Personal Data&quot; and how do you secure my personal data?</strong>
+            </p>
+            <p>
+                &quot;Personal data&quot; is one or more pieces of information about you that may be used to uniquely identify YOU. For example, there
+                may be a million people named &quot;John Smith&quot; (including the one in the Matrix), but when you start to add attributes like a date of birth,
+                place of birth, e-mail address, phone number, ... that subset gets smaller until only you are left in it.
+            </p>
+            <p>
+                We do not collect or store personal data.
+            </p>
+            <p>
+                <strong>4) What data do you collect?</strong>
+            </p>
+            <table class="table table-striped mt-2 mb-2">
+                <thead>
+                    <tr><th>Category</th><th>Purpose/Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Site Usage</td>
+                        <td>
+                            You can browse our Site without telling us who you are or giving
+                            us any Personal Data (defined above) about yourself. When you interact with us through your computer,
+                            our Site records certain non-identifying site usage data.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Information Collected via Technology
+                        </td>
+                        <td>
+                            When you visit the Site or Application, our
+                            web servers automatically collect limited information about your computer including the following:
+                            <p class="mt-2">
+                                <strong>Information Collected by Our Servers:</strong> To make our Site more useful to you,
+                                our servers (which may be hosted by a third party service provider) collect information from
+                                you, including your browser type, operating system, Internet Protocol ("IP") address (a
+                                number that is automatically assigned to your computer when you use the Internet, which may
+                                vary from session to session), domain name, and/or a date/time stamp for your visit.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Log Files</td>
+                        <td>
+                            As is true of most websites, we gather certain information automatically
+                            and store it in log files. This information includes IP addresses, browser type, Internet service
+                            provider ("ISP"), referring/exit pages, operating system, date/time stamp, and clickstream data. We
+                            use this information to analyze trends, administer the Site, and better tailor our Site to our
+                            users' needs. Except as noted in this Privacy Policy, we do not link this automatically-collected
+                            data to Personal Data.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cookies</td>
+                        <td>
+                            We do not use Cookies on SUJAYTRAVELAPPS.COM.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <strong>5) What data do you share? With who?</strong>
+            </p>
+            <p>
+                We do not share your data with any other API or service.
+            </p>
+            <p>
+                <strong>6) Do I have a way to see and control what data you share about me with others?</strong>
+            </p>
+            <p>
+                No. We do not hold any data personally identifiable to you and do not share anything with any other service or provider.
+            </p>
+            <p>
+                <strong>7) How else do you use my data?</strong>
+            </p>
+            <p>
+                SUJAYTRAVELAPPS uses the data you provide in a manner that is consistent with this Privacy Policy. 
+                We may also use your data such as data collected on site interaction and other personally non-identifiable 
+                information collected through the Services to help us improve the content and functionality of the Services, 
+                to better understand our users and to improve the Services. For example:
+            </p>
+            <ul>
+                <li>to provide our Application and its contents to you;</li>
+                <li>to develop services for you;</li>
+                <li>
+                    to enforce the Service Terms of Service, and to detect and protect against error, fraud and other
+                    unauthorized or illegal activities;
+                </li>
+                <li>in any other way we may describe when you provide the information;</li>
+            </ul>
+            <p>
+                <strong>8) How do you respond to legal or court-ordered requests for data?</strong>
+            </p>
+            <p>
+                The necessary level of information may be disclosed in response to legal investigations; to comply with
+                relevant laws; in response to warrants or court orders; to protect or defend the rights or property of SUJAYTRAVELAPPS
+                or the users of the Site; to investigate or assist in preventing any violation or potential violation of the law,
+                this Privacy Policy or our Terms of Service.
+            </p>
+            <p>
+                <strong>10) Third-party websites and links out of SUJAYTRAVELAPPS</strong>
+            </p>
+            <p>
+                Our Site may contain links to third party websites. When you click on a link to any other website or
+                location, you will leave our Site and go to another site, and another entity may collect Personal Data
+                or Anonymous Data from you. We have no control over, do not review, and cannot be responsible for, these
+                outside websites or their content. Please be aware that the terms of this Privacy Policy do not apply to
+                these outside websites or content, or to any collection of your Personal Data after you click on links
+                to such outside websites. We encourage you to read the privacy policies of every website you visit. The
+                links to third party websites or locations are for your convenience and do not signify our endorsement
+                of such third parties or their products, content or websites.
+            </p>
+            <p>
+                <strong>12) How do you handle data about young adults and children?</strong>
+            </p>
+            <p>
+                We do not collect, store or share any information attributable to any individual or age-group.
+            </p>
+            <p>
+                <strong>13) I am not Indian or am located outside the Union Territory of India. How am I affected by this policy?</strong>
+            </p>
+            <p>
+                Citizenship does not matter for the purposes of this policy. However, if you are located outside the legal international boundary of the Union Territory of India,
+                by visiting the Site and providing us with data, you acknowledge and agree that your data may be processed for the purposes identified in the Privacy Policy. In
+                addition, your data may be processed in the country in which it was collected and in other countries, including India, where laws regarding processing of
+                data may be less stringent than the laws in your country. By providing your data, you consent to such transfer.
+            </p>
+            <p>
+                <strong>14) Changes to This Privacy Policy</strong>
+            </p>
+            <p>
+                This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes
+                to our Privacy Policy by posting the new Privacy Policy here and we will change the "Last Updated" date
+                above. You should consult this Privacy Policy regularly for any changes.
+            </p>
+            <p>
+                <strong>15) Your consent</strong>
+            </p>
+            <p>
+                By accessing, using or submitting data through our Site, you agree to the terms of this
+                Privacy Policy and you expressly consent to the collection, use, and disclosure of your data in
+                accordance with this Privacy Policy.
+            </p>
+
+            <p><strong>16) What if I have questions or concerns? How do I get in touch?</strong></p>
+            <p>
+                If you have any questions or concerns about this policy, you may contact us via e-mail at: support&nbsp;@@&nbsp;SUJAYTRAVELAPPS&nbsp;.&nbsp;com
+                and we shall respond to your message/questions as soon as possible. You may also leave us a message via our
+                <a href="/contact-us">Contact Us</a> page, select the &quot;Privacy Policy&quot; as your subject.
+            </p>
+            <p>
+                You may also use the above means to let us know of a possible breach of the Privacy Policy or sharing of
+                data outside of the stated means and methods.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer text-white border-top">
+        <div class="container p-3">
+            <div class="small text-white" id="bg-pfg"></div>
+            Copyright &copy; @rightNow.Year - Sujay Travel Apps. All Rights Reserved.
+            | <a href="/terms-of-service" style="color: #ffffff;">Terms of Service</a> | <a href="/privacy-policy" style="color: #ffffff;">Privacy Policy</a>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/floating-ui/popper.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

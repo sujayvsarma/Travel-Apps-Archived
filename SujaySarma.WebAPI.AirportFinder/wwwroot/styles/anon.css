@@ -1,0 +1,42 @@
+﻿/*
+    sujaytravelapps.com
+    © 2022, Sujay V Sarma. All rights reserved.
+    Product : sujaytravelapps.com
+    About this file: Theme for anonymous layout/pages
+    Load AFTER app.css!
+
+    Reference: Bootstrap "dark" color: #343a40
+*/
+
+html {
+    /*background-image: url('/images/earth01.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;*/
+    /*opacity: 0.875;*/
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+html, body, form {
+    background-color: transparent !important;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 400;
+    /*text-shadow: 0px 1px 3px #000000;
+    color: #ffffff;*/
+}
+
+.bg-fixedcoverimg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
