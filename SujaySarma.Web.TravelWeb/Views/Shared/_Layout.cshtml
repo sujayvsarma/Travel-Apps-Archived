@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+@{
+    DateTime rightNow = DateTime.UtcNow;
+}
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="expires" content="@rightNow.AddMinutes(5).ToString("yyyy-MM-ddTHH:mm:ss.msZ")" />
+
+    <meta name="referrer" content="origin-when-crossorigin" id="meta_referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86, shrink-to-fit=yes, user-scalable=yes" />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="revisit-after" content="14 days" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/">
+
+    <meta name="distribution" content="web" />
+    <meta name="rating" content="general" />
+    <meta name="rating" content="safe for kids" />
+
+    <meta name="subject" content="travel" />
+    <meta name="subject" content="booking" />
+    <meta name="subject" content="tickets" />
+    <meta name="subject" content="airline" />
+
+    <meta name="author" content="Sujay V Sarma" />
+    <meta name="generator" content="asp.net 6.0" />
+    <meta name="keywords" content="airline,plan,trip,map,round trip,open ended trip,holiday,vacation,ideas,inspire,inspiration,cheap ticket,tickets,travel,flight,status,airport,india,Agartala,Agra,Ahmedabad,Aizwal,Akola,Allahabad,Amritsar,Aurangabad,Bagdogra,Balurghat,Belgaum,Bengaluru,Bhavnagar,Bhopal,Bhubaneswar,Bilaspur,Calicut,Chandigarh,Chennai,Coimbatore,Cooch-Behar,Dehradun,Delhi,Dibrugarh,Dimapur,Gaya,Goa,Guwahati,Gwalior,Hubli,Hyderabad,Imphal,Indore,Jabalpur,Jaipur,Jammu,Jodhpur,Jorhat,Kadapa,Kailashahar,Kamalpur,Kandla,Kanpur,Keshod,Khajuraho,Khowai,Kochi,Kolhapur,Kolkata,Kota,Kullu,Leh,Lilabari,Lucknow,Ludhiana,Madurai,Malda,Mangalore,Mumbai,Muzzafarpur,Mysore,Nagpur,Pantnagar,Patna,Pondicherry,Porbandar,Port Blair,Pune,Raipur,Rajahmundry,Rajkot,Ranchi,Rupsi,Salem,Satna,Shillong,Shimla,Sholapur,Silchar,Srinagar,Surat,Tanjavur,Tezpur,Tezu,Thiruvananthapuram,Tiruchirappalli,Tirupati,Tuticorin,Udaipur,Vadodara,Varanasi,Vijayawada,Visakhapatnam,Warangal,IXA,AGR,AMD,AJL,AKD,IXD,ATQ,IXU,IXB,RGH,IXG,BLR,BHU,BHO,BBI,PAB,CCJ,IXC,MAA,CJB,COH,DED,DEL,DIB,DMU,GAY,GOI,GAU,GWL,HBX,HYD,IMF,IDR,JLR,JAI,IXJ,JDH,JRH,CDP,IXH,IXQ,IXY,KNU,IXK,HJR,IXN,COK,KLH,CCU,KTU,KUU,IXL,IXI,LKO,LUH,IXM,LDA,IXE,BOM,MZU,MYQ,NAG,PGH,PAT,PNY,PBC,IXZ,PNQ,RPR,RJA,RAJ,IXR,RUP,SXV,TNI,SHL,SLV,SSE,IXS,SXR,STV,TJV,TEZ,TEI,TRV,TRZ,TIR,TCR,UDR,BDQ,VNS,VGA,VTZ,WGC" />
+    <meta name="copyright" content="Copyright &copy; @rightNow.Year Sujay V Sarma. All Rights Reserved." />
+
+    <meta name="abstract" content="Plan your travel and trips using a map based interface. Book your tickets directly with the airline. Also view arrival and departure boards of any airport in India." />
+    <meta name="summary" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+    <meta name="description" content="Click on a map and plan your next business trip or family vacation or that getaway with friends. Add unlimited destinations and create open-ended or roundtrip trips. Set up different passengers for each leg." />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>@ViewData["Title"] - Flights, Hotels, Travel Ideas</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/glyphicons/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/app.css" />
+    @if (IsSectionDefined("AdditionalStyles"))
+    {
+        @RenderSection("AdditionalStyles", required: false)
+    }
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow">
+            <div class="navbar-brand">
+                <div class="align-middle">
+                    <a class="text-white font-weight-bold" asp-controller="Home" asp-action="Index">
+                        Sujay's TravelWeb
+                    </a>
+                </div>
+            </div>
+            <ul class="navbar-nav float-right ml-auto">
+                <li class="nav-item small">
+                    <a class="nav-link" style="color: #ffffff !important;" role="button" asp-controller="TourPlanner" asp-action="Index" title="Plan a new trip">
+                        <span class="glyphicon glyphicon-edit"></span>New Trip
+                    </a>
+                </li>
+                <li class="nav-item small">
+                    <a class="nav-link" style="color: #ffffff !important;" role="button" asp-controller="TourPlanner" asp-action="GetTrip" asp-route-uniqueId=""
+                       title="Retrieve a saved itinerary and its flight options">
+                        <span class="glyphicon glyphicon-cloud-download"></span>Get Trip
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main role="main" class="p-0 m-0">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid">
+            Copyright &copy; @rightNow.Year - Sujay V Sarma
+            <br />Your IP address is @Context.Connection.RemoteIpAddress.ToString() | Server time is: @rightNow.ToString("MMM dd, yyyy hh:mm tt")
+            <hr />
+            <strong>Legal-ware:</strong>
+            <a href="/terms-of-service">Terms of Service</a> | <a href="/privacy-policy">Privacy Policy</a>
+            <hr />
+            <div class="w-100 bg-secondary text-white p-3">
+                This website uses free data and other open API provided by:
+                <a class="text-white" href="https://azure.microsoft.com/en-in/services/azure-maps/" target="_blank">Azure Maps</a>,
+                <a class="text-white" href="https://ourairports.com" target="_blank">Our Airports (data)</a>,
+                <a class="text-white" href="https://rapidapi.com" target="_blank">RapidAPI</a>,
+                <a class="text-white" href="https://www.countryflags.io/" target="_blank">Country Flags</a>,
+                <a class="text-white" href="https://restcountries.eu" target="_blank">REST Countries API</a>,
+                <a class="text-white" href="https://partners.skyscanner.net/affiliates/travel-apis" target="_blank">Skyscanner</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/floating-ui/popper.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+</body>
+</html>

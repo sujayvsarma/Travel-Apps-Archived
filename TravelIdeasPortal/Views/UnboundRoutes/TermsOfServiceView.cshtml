@@ -1,0 +1,231 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Terms of Service";
+}
+<div class="container p-5">
+    <h4>Terms of Service</h4>
+    <hr />
+    <p>
+        Here are the terms and conditions that you are bound by when you use this website and the features it provides. If you do not
+        agree with these terms, you should not use this website.
+    </p>
+
+    <h5 class="font-weight-bold">Purpose of this website</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            This website provides the ability to get information about different places on Earth.
+        </li>
+        <li>
+            You may plan a multi-leg, multi-day trip from any where to any where.
+        </li>
+        <li>
+            These trips may be one-way or a round trip (return to point of origin).
+        </li>
+        <li>
+            Each leg may have a different set of passengers.
+        </li>
+        <li>
+            We believe that some of the features we provide are unique to our website and that forms our value-proposition to you.
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Planning a trip</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            Using the world-map interface, click on any point on the Earth.
+        </li>
+        <li>
+            If we can get information about the spot, you will be shown a popup providing you information sourced from
+            multiple sources, including WikiPedia links to places of interest (and other topics) to do with that place.
+        </li>
+        <li>
+            The popup has a tab &quot;Airports nearby&quot;. This lists the nearest five (5) airports around that location. Some of them
+            may not be in the same state/province or even country.
+        </li>
+        <li>
+            Find the airport you want to fly from or fly to. Click on the &quot;Start here&quot; (if that is the first location on
+            your trip) or &quot;Fly here&quot; button to add that location to your trip.
+        </li>
+        <li>
+            If it is not the first location on your trip, you will get another popup asking you the date of travel and how many passengers
+            you want to add for that leg. We automatically pick the numbers from the previous leg of the trip (if it is the first leg,
+            we populate 1 adult and zero children/infants). The date we auto-populate is the next day after the previous leg. Make the selections
+            as per your requirements and click the &quot;Save&quot; button.
+        </li>
+        <li>
+            It is not necessary to return to the starting point.
+        </li>
+        <li>
+            As you add locations, you will see the list of legs appear just above the map (just below our logo). Notice how they light up when
+            you hover your mouse? Click it. The same dialog will appear allowing you to select the date of journey and set the passenger counts.
+            You may change this as you like and as many times as you like. When you change the <strong>date</strong>, we will automatically
+            update the dates for the following legs with the difference you moved it by (for example, if you moved the date by 2 days, all future
+            legs will be moved by 2 days each). We will not update the passenger numbers for other legs.
+        </li>
+        <li>
+            The same (above) dialog will also let you <strong class="text-danger">delete</strong> the leg. We do not adjust any legs based on your
+            deletion. In fact, on the map, you will notice that your trip is now &quot;disconnected&quot; with a gap in between. You may use this
+            as a feature when you don't want to fly everywhere (eg: you want to use a train or drive to somewhere else). You will need to manually
+            adjust the future legs.
+        </li>
+        <li>
+            Another cool feature we provide is the ability to go back and forth between locations <strong>as many times</strong> as you want to!
+        </li>
+        <li>
+            When you are done, click the &quot;Get Tickets&quot; button at the top-right of the screen.
+        </li>
+        <li>
+            Notice the URL in the address bar? You can grab that (copy it) and send it to friends and family so that they have the same itinerary.
+        </li>
+    </ol>
+
+    <div class="w-100 p-5 mb-3 bg-secondary text-white font-weight-bold">
+        Among our users, there would be many that can look at that URL and figure out what it means and how to modify it. We encourage you to modify it
+        and use the modified version directly with our ticketing interface and use the maps interface only as much as you really require. If you want to do
+        complicated things with this URL, do write in and we can help you.
+    </div>
+
+    <h5 class="font-weight-bold">Getting tickets for your trip</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            Once you have built the itinerary (or gotten the URL from a friend or family member who planned it for you), you will be on the
+            ticketing page.
+        </li>
+        <li>
+            There, along the top, you will see a <strong>Trip ID</strong>. It will be a mix of alphabets and numbers. Copy it and keep it.
+        </li>
+        <li>
+            You may refresh (or come back to) the ticketing page any number of times. Every time you refresh or open the ticketing page, the options shown to you 
+            <strong>will</strong> change. This is the data we get from our API partners. 
+        </li>
+        <li>
+            This is where the Trip ID comes in useful. When you want to share the planning with other people, each person may see a different set of flights. But, all 
+            of you can use the given Trip ID to see the same set of options -- even in the future. 
+        </li>
+        <li>
+            You will see that your planned itinerary may not a 100% match the list of flights we show you. This is because we do a key optimization to get you
+            the best prices. What we do is, we try to find round-trip journies in your itinerary. For example, if planned a leg from London to Singapore and some legs
+            later, you have a Singapore to London leg, our logic identifies it and treats it as a single round-trip. This means you get return-pricing advantages.
+            And, we try to find as many of these as possible on your trip. This is why though you did not explicitly select &quot;Round trip&quot; anywhere, you will
+            see round-trip flight options on the ticketing interface.
+        </li>
+        <li>
+            Along the top, you will see tabs showing the date of travel and the leg of the journey. Underneath will be a number in paranthesis.
+            The number is the number of flights we found for you for that leg. When the page loads, we show you the flights available for the first
+            of these legs.
+        </li>
+        <li>
+            When you click on a tab on top, the flights for that leg are shown.
+        </li>
+        <li>
+            We filter the results we get to show you only options provided by airlines/carriers themselves and not tour-operators. This reduces the clutter on
+            the screen, and also ensures a hassle free ticketing (and cancellation/modification) experience for you down the line.
+        </li>
+        <li>
+            On the flights display page, you will see a search box at the top right. Type in a time or a flight name or the name of a carrier (flight operator),
+            to filter the results shown to what you typed. If nothing matches, you will see all the options disappear!
+        </li>
+        <li>
+            Under that search box, you will see one (or two, if it is a round-trip leg) checkbox(es) with the text &quot;Show flights:...&quot;. CHECK a box ON to
+            see the list of flights you will be taking for that part of your journey. This will show the flight, departure/arrival times and all the layovers (time
+            between two connecting flights).
+        </li>
+        <li>
+            The <strong>Prices</strong> shown on the ticketing screen are inclusive of <strong>ALL passengers</strong>. So if you selected 2 adults and 3 children for a leg,
+            the flights on that flight-leg will show you pricing for all 5 people. If the leg is being treated as a round-trip, the price will be the total price for the
+            round-trip for all passengers.
+        </li>
+        <li>
+            The <strong>Duration</strong> of the trip as shown is the total duration, including all the layovers (time between two connecting flights) -- it is the time between
+            your first departure to your last arrival for that flight option.
+        </li>
+        <li>
+            When you click the &quot;Book Tickets&quot; button, you are taken to the particular ticketing agent (via our API partner, Skyscanner) to get your tickets.
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Using the Trip ID</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            Use the <strong>Get Trip</strong> option from the top menu. You will see a page that asks you to enter the Trip ID.
+        </li>
+        <li>
+            Enter the Trip ID from the ticketing page and click the &quot;Get Trip&quot; button on that form.
+        </li>
+        <li>
+            You will see the same ticketing page -- with the stopover legs and the &quot;Book Tickets&quot; buttons, just like before.
+        </li>
+        <li>
+            <strong>NOTE:</strong> If the date of travel is in the past, the &quot;Book Tickets&quot; buttons will not be shown.
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Our rates display vs On Airline Website</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            When you use the &quot;Book Tickets&quot; button and reach the airline's website, sometimes you may find that the prices shown to you are slightly different.
+            The difference may be in the order of a few hundred to a few thousand currency units.
+        </li>
+        <li>
+            This may be due to a variety of factors (including but not limited to): currency conversions and rounding off between various APIs used, actual changes in rate
+            from the time it was originally retrieved [for our website] to the time you saw the option on the airline's website. Airline rates do keep changing.
+        </li>
+        <li>
+            Also note that the airline's website selects a different flight for you on their website. This is beyond our control. Some airlines will automatically pre-select
+            the cheapest option (or whatever their recommendation engine chooses) on their page. Do find the flight [on their page] you wanted again and select it manually.
+        </li>
+        <li>
+            Sometimes (it does not happen too often though), you may find that the flight you wanted is completely booked or the class of travel (Economy, Business, etc) is full.
+            This is again beyond our control. Please reselect a flight you want on the airline's website. Searching again on our website may not help because our API partners
+            may be storing those numbers and we may still show you those flights and prices!
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Itinerary Modifications and Cancellations</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            At this time, we are not involved in the actual ticket-buying process. We hope to change this in the future by providing booking services directly on our website
+            instead of sending you to a hundred places to book tickets for your trip. This may also allow us to offer better rates to you. In the mean time, do bear with us.
+        </li>
+        <li>
+            We cannot assist, help or intervene for you for any booking, modifications or cancellations of your tickets. We cannot also help you with non-receipt of itinerary
+            emails or e-tickets and such.
+        </li>
+        <li>
+            You need to use the facilities provided by the respective airline to modify or cancel your reservations.
+        </li>
+    </ol>
+
+    <div class="w-100 p-5 mb-3 bg-danger text-white font-weight-bold">
+        If you are traveling out of your country of citizenship, it is your responsibility to verify requirements for Visas and ensure you have them before you travel.
+    </div>
+
+    <h5 class="font-weight-bold">Storage of your data</h5>
+    <p>Please see the <a href="/privacy-policy">Privacy Policy</a> for details of what data about you may be stored at our end and what/how we use it for.</p>
+
+    <h5 class="font-weight-bold">Change history</h5>
+    <ul class="mt-3">
+        <li>
+            Originally written: Nov 12th, 2019.
+        </li>
+    </ul>
+
+    <h5 class="font-weight-bold">Contact information</h5>
+    <p>
+        This website is created and maintained by <a target="_blank" href="https://sujayvsarma.com">Sujay V. Sarma</a>. You may contact me directly with your inputs,
+        problem reports, queries and more at <span class="rev">ni.amras@yajus</span>.
+    </p>
+</div>
+
+@section AdditionalStyles {
+    <style type="text/css">
+        p, li {
+            margin-top: 1rem !important
+        }
+
+        .rev {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+    </style>
+}

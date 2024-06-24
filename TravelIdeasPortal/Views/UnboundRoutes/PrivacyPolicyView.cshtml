@@ -1,0 +1,113 @@
+﻿@{ 
+    Layout = "_Layout";
+    ViewData["Title"] = "Privacy Policy";
+}
+<div class="container p-5">
+    <h4>Privacy Policy</h4>
+    <hr />
+    <p>
+        Here is our privacy policy that applies to you when you use this website and the features it provides. If you do not
+        agree with this policy, you should not use this website.
+    </p>
+
+    <h5 class="font-weight-bold">Data collected by this website</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            As with common web-based infrastructure, our servers, systems, operating system, web server etc may collect and store information 
+            about you and what you do on this website. This is configured, collected and used in ways and means beyond our control.
+        </li>
+        <li>
+            In addition, our web hosting provider (Microsoft Azure) may collect and store additional information about requests and responses for 
+            their own purposes. This is again, beyond our control.
+        </li>
+        <li>
+            We make use of <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Microsoft Application Insights</a> 
+            for telemetry. This data is used to monitor how requests flow through our source code and analyze problems and performance. 
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Cookies</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            We do not, at this time, make use of cookies. This may change in the future as we introduce additional features/capabilities that may require their usage.
+        </li>
+        <li>
+            We do, however, use <strong>Session Cookies</strong> to store some information during your usage so that we do not have to look it up again, 
+            giving you better performance. This data includes your GPS-provided latitude and longitude, country of origin and the currency used in that country.
+        </li>
+        <li>
+            We do not make use of any component that stores its own cookies on your computer.
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">GPS data collected by this website</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            When you visit our tour-planning web pages (the one with the map or the ticketing page), we pick up your external IP address and look it up to 
+            know your geographical coordinates. 
+        </li>
+        <li>
+            We use a web-based REST API service for this purpose and no data except the IP address (IPv4) is transmitted to them. We pick up only the latitude and 
+            longitude coordinates from their reply.
+        </li>
+        <li>
+            We use that latitude/longitude data, in turn, to fetch details about that location using Azure Maps REST API. From this, we pick up only the country, 
+            and the country's currency (3-letter code and symbol). 
+        </li>
+        <li>
+            From this whole process, the latitude and longitude are used on the map-experience to zoom in to that city when you first visit it. The country and 
+            currency properties are stored into your Session (you may see them at your end in the session cookie).
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Server-side data storage</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            This website is primarily a &quot;database-free&quot; application. Meaning, we have no real backend or database of our own. Whatever we show you, we call 
+            the respective API services and show you what they send us back (with a little on-the-fly processing).
+        </li>
+        <li>
+            The <strong>Trip ID</strong> feature stores the itinerary you created and the flight options we show you on screen (after our processing of the raw data we got 
+            from the partner API). However, it does not contain any personal data and only consists of the data provided during the planning of the itinerary (airport codes, 
+            dates of departure, class of travel and number of passengers).
+        </li>
+        <li>
+            Temporarily, we have set up a logging mechanism that tracks which features are being used more. This is to help us tune performance and external-API 
+            access so that we can provide a better experience for you. This system is only interested in statistical data. For example, we track how many times 
+            a particular button was clicked but not who clicked it and so on.
+        </li>
+        <li>
+            This may change in the future (if and when we start providing our own ticketing services).
+        </li>
+    </ol>
+
+
+    <h5 class="font-weight-bold">Access to stored data and data-deletion (&quot;Forget me&quot;)</h5>
+    <ol class="mt-3" style="list-style-type: decimal">
+        <li>
+            None of the data that is stored is at any time directly attributable to you. Data currently being collected and stored is about our code, our application, 
+            the performance and errors thrown by our code. Not about &quot;you&quot;.
+        </li>
+        <li>
+            Therefore, there is no way to find out what data (if any) is stored about &quot;you&quot;.
+        </li>
+        <li>
+            Therefore, there is no way to provide you with access to or delete &quot;your&quot; data.
+        </li>
+    </ol>
+
+    <h5 class="font-weight-bold">Change history</h5>
+    <ul class="mt-3">
+        <li>
+            Originally written: Nov 12th, 2019.
+        </li>
+    </ul>
+</div>
+
+@section AdditionalStyles {
+    <style type="text/css">
+        p, li {
+            margin-top: 1rem !important
+        }
+    </style>
+}

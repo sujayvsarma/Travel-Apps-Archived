@@ -1,0 +1,441 @@
+﻿@using System.Text;
+@using Microsoft.AspNetCore.Http;
+@using TravelIdeasPortalWeb.Objects.Skyscanner;
+
+
+@model Dictionary<SkyscannerPricingRequest, List<PricedItineraryOption>>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tickets... Tickets.. Get your tickets!";
+
+    long totalResults = 0;
+
+    if (Model != null)
+    {
+        foreach (SkyscannerPricingRequest spr in Model.Keys)
+        {
+            totalResults += ((Model[spr] == null) ? 0 : Model[spr].Count);
+        }
+    }
+
+    string currencySymbol = (ViewData["__tripCurrencySymbol"] as string) ?? Context.Session.GetString("__gpsCurrencySymbol");
+    string TripID = (ViewData["__uniqueId"] as string) ?? Context.Session.GetString("__uniqueId");
+}
+
+@if (totalResults == 0)
+{
+    <div class="alert alert-dark fade show" role="alert">
+        <strong>Oops!</strong> It looks like something went wrong. Simply hit refresh (F5) and we will see if we can show you some great deals that actually exist!
+    </div>
+
+    return;
+}
+
+<div id="itineraryMap" class="p-0 bg-success text-white text-left">
+    <ul class="nav nav-tabs" id="itineraryMapItems" role="tablist">
+        @{
+            int i = 0;
+            foreach (SkyscannerPricingRequest pr in Model.Keys.OrderBy(r => r.OutboundDeparture))
+            {
+                string id = $"itineraryItem{i}";
+                <li class="nav-item small text-center">
+                    <a class="nav-link @((i == 0) ? "active" : "")" id="@id" data-toggle="tab" href="@("#" + id + "Content")" role="tab">
+                        <span class="glyphicon glyphicon-calendar"></span>@pr.OutboundDeparture.ToString("MMM dd, yyyy")<br />
+                        @pr.Origin.Iata - @pr.Destination.Iata@(pr.ReturnDeparture.HasValue ? " - " + pr.Origin.Iata : "")<br />
+                        (@Model[pr].Count)
+                    </a>
+                </li>
+
+                i++;
+            }
+        }
+    </ul>
+</div>
+
+<div class="p-3 bg-warning text-dark text-left">
+    <strong>Trip Id# <span class="text-uppercase">@TripID</span></strong>
+    <span class="glyphicon glyphicon-info-sign" title="Use the GET TRIP option and enter this code to see exactly the same options as below. You can share this code with anyone."></span>
+</div>
+
+<div class="table w-100 mt-3">
+    <div class="row">
+        <div class="col-sm-12 col-md">&nbsp;</div>
+        <div class="col-sm-12 col-md-2 text-right">
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text" style="background-color: transparent !important; color: #343a40;"><span class="glyphicon glyphicon-search"></span></div></div>
+                <input type="search" autocomplete="on" id="tableSearchField" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content" id="itineraryItemTabContents">
+    @{
+        i = 0;
+        int priceOptionIndex = 0;
+        foreach (SkyscannerPricingRequest pr in Model.Keys)
+        {
+            bool showOutboundBookButtons = (pr.OutboundDeparture > DateTime.UtcNow);
+            bool showInboundBookButtons = (pr.ReturnDeparture.HasValue && (pr.ReturnDeparture.Value > DateTime.UtcNow));
+
+            string id = $"itineraryItem{i}Content";
+            <div class="tab-pane p-3 fade @((i == 0) ? "show active" : "")" id="@id" role="tabpanel" style="width: 100%;">
+                <div class="table w-100">
+                    <div class="row">
+                        <div class="col-sm-12 col-md">
+                            <h4 class="ml-4">@pr.Origin.Iata - @pr.Destination.Iata@(pr.ReturnDeparture.HasValue ? " - " + pr.Origin.Iata : "")</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-check small" style="white-space: nowrap;">
+                                <input type="checkbox" id="@("showOutboundLegs" + i.ToString())" value="1" class="form-check-input" data-itemid="@i" data-itemtype="outbound" />
+                                <label for="@("showOutboundLegs" + i.ToString())" id="@("lblshowOutboundLegs" + i.ToString())" class="form-check-label">Show Flights: @pr.Origin.Iata - @pr.Destination.Iata</label>
+                            </div>
+                        </div>
+                        @if (pr.ReturnDeparture.HasValue)
+                        {
+                            <div class="col-sm-12 col-md-2">
+                                <div class="form-check small" style="white-space: nowrap;">
+                                    <input type="checkbox" id="@("showInboundLegs" + i.ToString())" value="1" class="form-check-input" data-itemid="@i" data-itemtype="inbound" />
+                                    <label for="@("showInboundLegs" + i.ToString())" id="@("lblshowInboundLegs" + i.ToString())" class="form-check-label">Show Flights: @pr.Destination.Iata - @pr.Origin.Iata</label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <hr />
+                <table class="table w-100">
+                    <tbody>
+                        @foreach (PricedItineraryOption po in Model[pr].OrderBy(o => o.Price))
+                        {
+                            bool hasReturn = ((po.ReturnSegments != null) && (po.ReturnSegments.Count > 0));
+                            int forwardStopOvers = po.NumberOfForwardLegs - 1;
+                            int returnOptions = (hasReturn ? po.ReturnSegments.Count : 0);
+
+                            PricedItinerarySegment outboundDepartureSegment = po.ForwardSegments[0], outboundArrivalSegment = po.ForwardSegments[po.ForwardSegments.Count - 1];
+                            DateTime outboundDeparture = outboundDepartureSegment.Departure, outboundArrival = outboundArrivalSegment.Arrival;
+                            bool isDifferentDayArrivalOutbound = ((outboundDeparture.Day != outboundArrival.Day) || (outboundDeparture.Month != outboundArrival.Month) || (outboundDeparture.Year != outboundArrival.Year));
+                            int totalOutboundDuration = (int)(outboundArrival - outboundDeparture).TotalMinutes;
+
+                            <tr>
+                                <td class="text-center" style="padding: 0px;">
+                                    <img src="@po.Agent.Value" width="96" /><br />
+                                    <span class="font-weight-bold">@po.Agent.Key</span>
+                                </td>
+                                <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                    <img src="~/StaticContent/images/aircraft-takeoff.svg" width="32" height="32" /><br />
+                                    @outboundDeparture.ToString("HH:mm")
+                                    @if (isDifferentDayArrivalOutbound)
+                                    {
+                                        <br /><span class="small">@outboundDeparture.ToString("MMM dd, yyyy")</span>
+                                    }
+                                </td>
+                                <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                    <strong>@getDurationString(totalOutboundDuration)</strong>
+                                    <hr class="border border-secondary" />
+                                    @{
+                                        if (forwardStopOvers == 0)
+                                        {
+                                            <span class="text-dark">Direct Flight</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-primary">@forwardStopOvers Stops</span>
+                                        }
+                                    }
+                                </td>
+                                <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                    <img src="~/StaticContent/images/aircraft-landing.svg" width="32" height="32" /><br />
+                                    @outboundArrival.ToString("HH:mm")
+                                    @if (isDifferentDayArrivalOutbound)
+                                    {
+                                        <br /><span class="small">@outboundArrival.ToString("MMM dd, yyyy")</span>
+                                    }
+                                </td>
+                                @if (hasReturn)
+                                {
+                                    PricedItinerarySegment inboundDepartureSegment = po.ReturnSegments[0], inboundArrivalSegment = po.ReturnSegments[po.ReturnSegments.Count - 1];
+                                    DateTime inboundDeparture = inboundDepartureSegment.Departure, inboundArrival = inboundArrivalSegment.Arrival;
+                                    bool isDifferentDayArrivalInbound = ((inboundDeparture.Day != inboundArrival.Day) || (inboundDeparture.Month != inboundArrival.Month) || (inboundDeparture.Year != inboundArrival.Year));
+                                    int totalInboundDuration = (int)(inboundArrival - inboundDeparture).TotalMinutes;
+                                    int returnStopOvers = po.NumberOfReturnLegs - 1;
+
+                                    <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                        <img src="~/StaticContent/images/aircraft-takeoff.svg" width="32" height="32" /><br />
+                                        @inboundDeparture.ToString("HH:mm")
+                                        @if (isDifferentDayArrivalInbound)
+                                        {
+                                            <br /><span class="small">@inboundDeparture.ToString("MMM dd, yyyy")</span>
+                                        }
+                                    </td>
+                                    <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                        <strong>@getDurationString(totalInboundDuration)</strong>
+                                        <hr class="border border-secondary" />
+                                        @{
+                                            if (returnStopOvers == 0)
+                                            {
+                                                <span class="text-dark">Direct Flight</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-primary">@forwardStopOvers Stops</span>
+                                            }
+                                        }
+                                    </td>
+                                    <td class="text-center" style="width: 148px !important; white-space: nowrap;">
+                                        <img src="~/StaticContent/images/aircraft-landing.svg" width="32" height="32" /><br />
+                                        @inboundArrival.ToString("HH:mm")
+                                        @if (isDifferentDayArrivalInbound)
+                                        {
+                                            <br /><span class="small">@inboundArrival.ToString("MMM dd, yyyy")</span>
+                                        }
+                                    </td>
+                                }
+                                <td class="text-right font-weight-bold" style="white-space: nowrap;">
+                                    @currencySymbol @po.Price.ToString("N0")
+                                </td>
+                                <td class="text-center" style="white-space: nowrap;">
+                                    @if (showOutboundBookButtons || showInboundBookButtons)
+                                    {
+                                        string url = (
+                                                (po.Id == Guid.Empty)
+                                                ? po.TicketingUri
+                                                : $"https://{Context.Request.Host.ToString()}/redirectTo/{Context.Session.GetString("_XsrfToken")}?tip={TripID}&locator={po.Id.ToString("n")}"
+                                            );
+
+                                        <button id="@("bookNowButton" + priceOptionIndex.ToString())" class="btn btn-lg btn-primary font-weight-bold text-white border border-white text-uppercase p-2"
+                                                data-uri="@url" onclick="showRedirectAlert(@priceOptionIndex, '@po.Agent.Key');">
+                                            Book Tickets
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger font-weight-bold">EXPIRED</span>
+                                    }
+                                </td>
+                                <td class="text-center p-0" style="display: none;" id="@("outboundLegs" + i.ToString())">
+                                    <table class="table w-100 p-0 small">
+                                        <tr>
+                                            @{
+                                                PricedItinerarySegment previousForwardSegment = null;
+                                                foreach (PricedItinerarySegment segment in po.ForwardSegments)
+                                                {
+                                                    if (previousForwardSegment != null)
+                                                    {
+                                                        <td style="width: 148px !important; white-space: nowrap; padding: 0px; margin: 0px;">
+                                                            <table style="width: 148px !important;" class="table">
+                                                                <tbody>
+                                                                    <tr><td class="text-center p-2 font-weight-bold bg-warning text-dark" colspan="2">Layover</td></tr>
+                                                                    <tr>
+                                                                        <td class="p-3 text-center">
+                                                                            @getDurationString((int)(segment.Departure - previousForwardSegment.Arrival).TotalMinutes)
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    }
+                                                    <td style="width: 148px !important; white-space: nowrap; padding: 0px; margin: 0px;">
+                                                        <table style="width: 148px !important;" class="table">
+                                                            <tbody>
+                                                                <tr><td class="text-center p-2 font-weight-bold bg-secondary text-white" colspan="2">@segment.Flight.FlightNumber</td></tr>
+                                                                <tr>
+                                                                    <td class="text-left p-1"><strong>@segment.Origin.IATA</strong></td>
+                                                                    <td class="text-right p-1"><span class="glyphicon glyphicon-time"></span>@segment.Departure.ToString("HH:mm")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left p-1"><strong>@segment.Destination.IATA</strong></td>
+                                                                    <td class="text-right p-1"><span class="glyphicon glyphicon-time"></span>@segment.Arrival.ToString("HH:mm")</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+
+                                                    previousForwardSegment = segment;
+                                                }
+                                            }
+                                            <td style="width: 100%;">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                @if (hasReturn)
+                                {
+                                    <td class="text-center p-0e" style="display: none;" id="@("inboundLegs" + i.ToString())">
+                                        <table class="table w-100 p-0 small">
+                                            <tr>
+                                                @{
+                                                    PricedItinerarySegment previousReturnSegment = null;
+                                                    foreach (PricedItinerarySegment segment in po.ReturnSegments)
+                                                    {
+                                                        if (previousReturnSegment != null)
+                                                        {
+                                                            <td style="width: 148px !important; white-space: nowrap; padding: 0px; margin: 0px;">
+                                                                <table style="width: 148px !important;" class="table">
+                                                                    <tbody>
+                                                                        <tr><td class="text-center p-2 font-weight-bold bg-warning text-dark" colspan="2">Layover</td></tr>
+                                                                        <tr>
+                                                                            <td class="p-3 text-center">
+                                                                                @getDurationString((int)(segment.Departure - previousReturnSegment.Arrival).TotalMinutes)
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        }
+                                                        <td style="width: 148px !important; white-space: nowrap; padding: 0px; margin: 0px;">
+                                                            <table style="width: 148px !important;" class="table">
+                                                                <tbody>
+                                                                    <tr><td class="text-center p-2 font-weight-bold bg-secondary text-white" colspan="2">@segment.Flight.FlightNumber</td></tr>
+                                                                    <tr>
+                                                                        <td class="text-left p-1"><strong>@segment.Origin.IATA</strong></td>
+                                                                        <td class="text-right p-1"><span class="glyphicon glyphicon-time"></span>@segment.Departure.ToString("HH:mm")</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-left p-1"><strong>@segment.Destination.IATA</strong></td>
+                                                                        <td class="text-right p-1"><span class="glyphicon glyphicon-time"></span>@segment.Arrival.ToString("HH:mm")</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+
+                                                        previousReturnSegment = segment;
+                                                    }
+                                                }
+                                                <td style="width: 100%;">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                }
+                            </tr>
+
+                            priceOptionIndex++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            i++;
+        }
+    }
+</div>
+
+<div id="redirectInfoModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span>What next...</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body small">
+                <ol>
+                    <li>A new tab/window will open and take you to <span class="airline-name"></span> airline's website.</li>
+                    <li class="mt-2">The dates and passenger numbers you selected will be automatically transferred to <span class="airline-name"></span>.</li>
+                    <li class="mt-2">
+                        <span class="airline-name"></span> will usually automatically select their lowest fare for the date. This may be different from the flight you clicked &quot;Book Now&quot; on.
+                        Ensure the selected flight on the <span class="airline-name"></span> website is what you want before you continue.
+                    </li>
+                    <li class="mt-2">
+                        The price you will see on the <span class="airline-name"></span> website may be slightly different from what we showed you here. This is because of currency conversion
+                        between USD and INR.
+                    </li>
+                    <li class="mt-2">Please use only one window or tab per airline -- some airline websites will behave strangely when you open more than one tab or window for their website!</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="itemId" />
+                <button type="button" class="btn btn-primary border-dark text-white font-weight-bold" data-dismiss="modal">Ok, noted!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.modal').modal(
+                {
+                    backdrop: 'static',
+                    keyboard: false,
+                    focus: true,
+                    show: false
+                }
+            );
+        });
+
+        $('#tableSearchField').on('keyup', function () {
+            var keyword = $(this).val().toLowerCase();
+            $("div.tab-pane.active #legItinerary tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().replace("&nbsp;", " ").indexOf(keyword) > -1)
+            });
+        });
+
+        function showRedirectAlert(itemId, airline) {
+            $('#redirectInfoModal span.airline-name').html(airline);
+            $('#redirectInfoModal #itemId').val(itemId);
+            $('#redirectInfoModal').modal('show');
+        }
+
+        $('#redirectInfoModal button.btn-primary').on('click', function () {
+            var itemId = $('#redirectInfoModal #itemId').val();
+            if (itemId !== '') {
+                var uri = $('#bookNowButton' + itemId).data('uri');
+                window.open(uri, '_blank');
+            }
+        });
+
+        $('input:checkbox').change(function () {
+            var chk = $(this);
+
+            var id = chk.data('itemid');
+            var type = chk.data('itemtype');
+            var fullId = ((type === 'outbound') ? 'outboundLegs' + id : 'inboundLegs' + id);
+
+            if (chk.prop('checked')) {
+                $('td#' + fullId).attr('style', '');
+            }
+            else {
+                $('td#' + fullId).attr('style', 'display: none;');
+            }
+        });
+    </script>
+}
+
+@section AdditionalStyles {
+    <style type="text/css">
+        .modal-content {
+            border: solid 1px #343a40;
+            border-radius: 0.5rem !important;
+            box-shadow: 8px 7px 2px #aaaaaa;
+        }
+    </style>
+}
+
+@{
+
+    // Helper functions used above
+
+    // Get the duration as a human-readable string
+    //  minutes - the duration in minutes returned by the Skyscanner API
+    string getDurationString(int minutes)
+    {
+        StringBuilder result = new StringBuilder();
+
+        if (minutes < 60)
+        {
+            result.Append(minutes).Append(((minutes <= 1) ? " min" : " mins"));
+        }
+        else
+        {
+            int hr = (minutes / 60), min = (minutes % 60);
+            result.Append(hr).Append(((hr <= 1) ? " hr" : " hrs"));
+            if (min > 0)
+            {
+                result.Append(" ").Append(min).Append(((min <= 1) ? " min" : " mins"));
+            }
+        }
+
+        return result.ToString();
+    }
+
+}

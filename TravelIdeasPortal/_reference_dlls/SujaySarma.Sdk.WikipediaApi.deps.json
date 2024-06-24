@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "SujaySarma.Sdk.WikipediaApi/1.0.1": {
+        "dependencies": {
+          "SujaySarma.Sdk.RestApi": "1.1.0"
+        },
+        "runtime": {
+          "SujaySarma.Sdk.WikipediaApi.dll": {}
+        }
+      },
+      "SujaySarma.Sdk.RestApi/1.1.0": {
+        "runtime": {
+          "SujaySarma.Sdk.RestApi.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SujaySarma.Sdk.WikipediaApi/1.0.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SujaySarma.Sdk.RestApi/1.1.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SujaySarma.Sdk.UniqueStrings/1.0.0": {
+        "dependencies": {
+          "Hashids.net": "1.3.0"
+        },
+        "runtime": {
+          "SujaySarma.Sdk.UniqueStrings.dll": {}
+        }
+      },
+      "Hashids.net/1.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/Hashids.net.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SujaySarma.Sdk.UniqueStrings/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hashids.net/1.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nh8GZuWsPFdKRmuZp6HOkpiuowCyISjiyfSpYyoAsdQDown5Zh/6tO5Xyfy8oXSVH2XCJc37eokA4w/Oc9Nl2g==",
+      "path": "hashids.net/1.3.0",
+      "hashPath": "hashids.net.1.3.0.nupkg.sha512"
+    }
+  }
+}

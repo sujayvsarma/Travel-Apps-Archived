@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Enter the Trip ID";
+}
+
+<div class="container-fluid m-5">
+    <div class="card" style="width: 640px !important; height: auto !important; margin-left: auto !important; margin-right: auto !important;">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="card-title">Enter trip ID</h5>
+        </div>
+        <div class="card-body">
+            <input id="tripId" type="text" class="form-control text-center" maxlength="16" required title="Enter the trip ID" />
+        </div>
+        <div class="card-footer text-right">
+            @if((Model != null) && (Model == "ERROR"))
+            {
+                <span class="text-danger mr-3">Trip not found. Try again!</span>
+            }
+            <button class="btn btn-primary text-white border-white" type="submit" id="getTripButton">
+                <span class="glyphicon glyphicon-cloud-download"></span>Get Trip
+            </button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $('#getTripButton').on('click', function () {
+            window.location.href = '/get/' + $('#tripId').val().trim();
+        });
+    </script>
+}

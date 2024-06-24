@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SujaySarma.Sdk.RestApi/1.2.0": {
+        "runtime": {
+          "SujaySarma.Sdk.RestApi.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SujaySarma.Sdk.RestApi/1.2.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

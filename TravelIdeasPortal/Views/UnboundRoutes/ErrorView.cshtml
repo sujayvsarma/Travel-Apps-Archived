@@ -1,0 +1,22 @@
+﻿@model Exception
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container p-5">
+    <h3>Error!</h3>
+    <p class="text-danger">
+        There was a problem. It has been logged transparently to our systems and will be investigated and attended to as soon as possible. Try your request again.
+        If it continues to occur, please wait for us to fix it (there is no point in beating a tap for water when there is no water being supplied!). Thank you for
+        your patience!
+    </p>
+    <hr />
+    @if (Model != null)
+    {
+        <div class="text-info small p-5">
+            <strong>Actual message:</strong> @Model.Message<br />
+            <strong>Server date/time:</strong> @DateTime.UtcNow.ToString("MMM dd, yyyy HH:mm:ss")<br />
+            <strong>Your IP address:</strong> @Context.Connection.RemoteIpAddress.ToString()
+        </div>
+    }
+</div>
